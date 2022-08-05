@@ -17,26 +17,25 @@ public class RPSGame {
 	    }
 	    
 	    public void play() {
+	        while(!isFinished()) {
+	        	RoundPrinter.printStatus(this);
+	        	
+	        	Round round = new Round(p1, p2);
+	        	rounds.add(round);
 	        
-	        printStatus();
-	        
-	        Round round = new Round(p1, p2);
-	        rounds.add(round);
-	        
-	        round.play();
-	        draws += round.getDraw();
-	        
-	        if(!isFinished()) play();
-	        else System.out.println("\nGAME WON\n");
+	        	round.play();
+	        	draws += round.getDraw();
+	        }
+	        System.out.println("\nGAME WON\n");
 	    }
 	    
-	    private void printStatus() {
-	        System.out.println("\n***** Round: " +getRoundsPlayed() + " *********************\n");
-	        System.out.println("Number of Draws: "+draws + "\n");
-	    }
 	    
 	    public boolean isFinished(){
 	        return (p1.getWins()>=3)||(p2.getWins()>=3);
+	    }
+	    
+	    public int getDraws() {
+	    	return draws;
 	    }
 	    
 	    public int getRoundsPlayed() {

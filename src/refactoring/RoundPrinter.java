@@ -12,10 +12,19 @@ public abstract class RoundPrinter {
 	    System.out.printf("Player 2: %10s\t Player 2 Total Wins: %s%n%n", p2.getChoice(), p2.getWins());
 	    
 	    if(winner == p1) System.out.println("Player 1 Wins");
-	    if(winner == p2) System.out.println("Player 2 Wins");
+	    else if(winner == p2) System.out.println("Player 2 Wins");
 	    else System.out.println("\n\t\t\t Draw \n");
     
 
 	}
 	
+	public static void printStatus(RPSGame game) {
+		
+		int roundsPlayed = game.getRoundsPlayed();
+		int draws = game.getDraws();
+		
+        System.out.println("\n***** Round: " + roundsPlayed + " *********************\n");
+        System.out.println("Number of Draws: "+draws + "\n");
+    }
+    
 }
